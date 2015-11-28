@@ -47,6 +47,7 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -65,6 +66,12 @@
     <Content Include="Views\Csrf\Level1AuthFailed.cshtml" />
     <Content Include="Views\Csrf\Level1NotCsrf.cshtml" />
     <Content Include="Views\Csrf\Level2.cshtml" />
+    <Content Include="Views\Csrf\Level2AuthFailed.cshtml" />
+    <Content Include="Views\Csrf\Level2BadJson.cshtml" />
+    <Content Include="Views\Csrf\Level2WrongParameter.cshtml" />
+    <Content Include="Views\Csrf\Level2NotCsrf.cshtml" />
+    <Content Include="Views\Csrf\Level2Success.cshtml" />
+    <Content Include="Content\Images\game-over.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

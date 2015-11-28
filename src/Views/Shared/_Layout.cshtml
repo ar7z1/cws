@@ -9,7 +9,8 @@
         <title>Candy Security Game</title>
         <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
     </head>
-    <body>
+    @{var bodyClass = ViewBag.EndOfGame == true ? "game-over" : "normal";}
+    <body class="@bodyClass">
         <div>
             @if (ViewBag.Header != null) {
                 <h1>@ViewBag.Header</h1>

@@ -3,9 +3,4 @@
     ViewBag.Header = "Candy CSRF: Level 2";
 }
 
-<p>Сделай CSRF, установив параметр <b>hacker</b> в <b>true</b>.</p>
-
-@using (Html.BeginForm("Level1", "Csrf", FormMethod.Post))
-{
-    @Html.Hidden("hacker", "false")
-}
+<p>Сделайте CSRF, отправив POST-ом JSON <b><code>{"hacker" : "true"}</code></b> на <b><code>/Csrf/Level2</code></b>.</p>
