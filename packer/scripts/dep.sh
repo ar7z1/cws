@@ -11,7 +11,7 @@ apt-get -y update
 apt-get -y install curl
 
 # You can install anything you need here.
-apt-get install mono-runtime
+apt-get install mono-complete
 apt-get install apache2
 /etc/init.d/apache2 stop
 apt-get install libapache2-mod-mono libmono-i18n4.0-cil
