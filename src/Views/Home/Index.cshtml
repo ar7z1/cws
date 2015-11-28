@@ -1,19 +1,9 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Header = "Candy Security Game";
 }
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-        <title>Candy Security Game</title>
-        <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
-    </head>
-    <body>
-        <h1>Candy Security Game</h1>
-            <span>
-                @Html.ActionLink("XSS", "Level1", "Xss")
-                @Html.ActionLink("CSRF", "Level1", "Csrf")
-            </span>
-    </body>
-</html>
+<span>
+    @Html.ActionLink("XSS", "Level1", "Xss")
+    @Html.ActionLink("CSRF", "Level1", "Csrf")
+</span>

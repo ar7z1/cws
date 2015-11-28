@@ -58,6 +58,7 @@
     <Content Include="Content\Images\charlie-unicorn-candy-mountain.jpg" />
     <Content Include="Views\Csrf\Level1.cshtml" />
     <Content Include="Views\Xss\Level1.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -83,5 +84,6 @@
   <ItemGroup>
     <Folder Include="Views\Xss\" />
     <Folder Include="Views\Csrf\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
 </Project>
