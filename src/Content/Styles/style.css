@@ -16,7 +16,7 @@ h1 {
     text-shadow: 3px 2px 0 #ffffff;
 }
 
-a {
+.big-link {
     display: inline-block;
     padding: 20px 60px 25px;
     background: pink;
@@ -27,7 +27,7 @@ a {
     color: blue;
     transition: all 0.5s ease;
 }
-a:hover {
+.big-link:hover {
     background: royalblue;
 }
 

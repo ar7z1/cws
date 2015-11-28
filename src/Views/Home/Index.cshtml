@@ -4,6 +4,6 @@
 }
 
 <span>
-    @Html.ActionLink("XSS", "Level1", "Xss")
-    @Html.ActionLink("CSRF", "Level1", "Csrf")
+    <a class="big-link" href="@Url.Action("Level1", "Xss")">XSS</a>
+    <a class="big-link" href="@Url.Action("Level1", "Csrf")">CSRF</a>
 </span>
