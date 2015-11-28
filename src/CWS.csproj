@@ -56,12 +56,16 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Content\Styles\style.css" />
     <Content Include="Content\Images\charlie-unicorn-candy-mountain.jpg" />
+    <Content Include="Views\Csrf\Level1.cshtml" />
+    <Content Include="Views\Xss\Level1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\XssController.cs" />
+    <Compile Include="Controllers\CsrfController.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -76,4 +80,8 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="Views\Xss\" />
+    <Folder Include="Views\Csrf\" />
+  </ItemGroup>
 </Project>

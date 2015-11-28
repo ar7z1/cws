@@ -11,11 +11,9 @@
     </head>
     <body>
         <h1>Candy Security Game</h1>
-        <p>
-            @Html.ActionLink("XSS", "Index", "Level1")
-        </p>
-        <p>
-            @Html.ActionLink("CSRF", "Index", "Level1")
-        </p>
+            <span>
+                @Html.ActionLink("XSS", "Level1", "Xss")
+                @Html.ActionLink("CSRF", "Level1", "Csrf")
+            </span>
     </body>
 </html>
