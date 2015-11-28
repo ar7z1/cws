@@ -6,11 +6,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-	    <title>Candy Game</title>
-	    <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
-	</head>
-	<body>
-		<h1>Candy Game</h1>
-		@Html.ActionLink("Начать", "Index", "Level1")
-	</body>
+        <title>Candy Security Game</title>
+        <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
+    </head>
+    <body>
+        <h1>Candy Security Game</h1>
+        <p>
+            @Html.ActionLink("XSS", "Index", "Level1")
+        </p>
+        <p>
+            @Html.ActionLink("CSRF", "Index", "Level1")
+        </p>
+    </body>
 </html>

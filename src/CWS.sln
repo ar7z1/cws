@@ -14,4 +14,26 @@ Global
 		{C61F5A7C-02A6-4568-B411-A6C949473882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C61F5A7C-02A6-4568-B411-A6C949473882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = application/config+xml
+		$0.XmlFormattingPolicy = $2
+		$2.inheritsSet = null
+		$2.scope = application/config+xml
+		$0.TextStylePolicy = $3
+		$3.inheritsSet = null
+		$3.scope = application/xml
+		$0.XmlFormattingPolicy = $4
+		$4.inheritsSet = Mono
+		$4.inheritsScope = application/xml
+		$4.scope = application/xml
+		$0.TextStylePolicy = $5
+		$5.FileWidth = 120
+		$5.NoTabsAfterNonTabs = True
+		$5.inheritsSet = VisualStudio
+		$5.inheritsScope = text/plain
+		$5.scope = text/plain
+	EndGlobalSection
 EndGlobal
