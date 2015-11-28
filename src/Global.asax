@@ -1,2 +1,1 @@
-﻿<%@ Application Inherits="CWS.MvcApplication" %>
-
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="CWS.MvcApplication" Language="C#" %>
