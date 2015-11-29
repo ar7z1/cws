@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Uri>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Header = "Candy XSS: Level 2";
+}
+
+<div id="task" class="level">
+    <div>Сделайте XSS.</div>
+    @if (!string.IsNullOrWhiteSpace(ViewBag.UriParseErrorLink)) {
+        <div>&laquo;<b>@ViewBag.UriParseErrorLink</b>&raquo; - не ссылка!</div>
+    }
+    @foreach(var link in Model) {
+        <div><a href="@link.ToString()">Ссылка</a></div>
+    }
+    <form action="" method="POST">
+      <input id="link" name="link" value="" autofocus="true" autocomplete="off" />
+    </form>
+</div>
+
+<p id="nextLevel" class="hidden">Отлично! @Html.ActionLink("Следующий уровень", "Level3", "Xss").</p>

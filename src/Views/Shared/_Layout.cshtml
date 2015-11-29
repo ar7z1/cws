@@ -9,7 +9,7 @@
         <title>Candy Security Game</title>
         <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
         <script src="~/Scripts/jquery-2.1.4.min.js" type="text/javascript"></script>
-        @RenderSection("Scripts", false)
+        <script src="~/Scripts/checker.js" type="text/javascript"></script>
     </head>
     @{var bodyClass = ViewBag.EndOfGame == true ? "game-over" : "normal";}
     <body class="@bodyClass">

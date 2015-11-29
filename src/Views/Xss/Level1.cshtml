@@ -5,28 +5,10 @@
     ViewBag.Header = "Candy XSS: Level 1";
 }
 
-@section Scripts
-{
-    <script>
-        var originalAlert = window.alert;
-        var isAlerted = false;
-        window.alert = function(s) {
-            isAlerted = true;
-            originalAlert(s);
-        };
-        $(function(){
-            if (isAlerted) {
-                $('#task').hide();
-                $('#nextLevel').show();
-            }
-        });
-    </script>
-}
-
 <div id="task" class="level">
     <div>Сделайте XSS.</div>
     @if (!string.IsNullOrWhiteSpace(Model)) {
-        <div>По запросу &laquo;@Html.Raw(Model)&raquo; ничего не найдено.</div>
+        <div>По запросу &laquo;<b>@Html.Raw(Model)</b>&raquo; ничего не найдено.</div>
     }
     <form action="" method="GET">
       <input id="query" name="query" value="" autofocus="true" autocomplete="off" />
