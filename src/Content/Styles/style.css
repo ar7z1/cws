@@ -77,3 +77,7 @@ p {
 .hidden {
     display: none;
 }
+
+#image img {
+    width: 60%;
+}

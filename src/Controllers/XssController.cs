@@ -36,5 +36,11 @@ namespace CWS.Controllers
             }
             return View(links);
         }
+
+        [HttpGet]
+        public ActionResult Level3()
+        {
+            return View();
+        }
     }
 }

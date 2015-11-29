@@ -6,7 +6,7 @@
 }
 
 <div id="task" class="level">
-    <div>Сделайте XSS.</div>
+    <div>Сделайте reflected XSS и выведите что-нибудь при помощи <b><code>alert()</code></b>.</div>
     @if (!string.IsNullOrWhiteSpace(Model)) {
         <div>По запросу &laquo;<b>@Html.Raw(Model)</b>&raquo; ничего не найдено.</div>
     }

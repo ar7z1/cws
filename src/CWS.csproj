@@ -76,6 +76,10 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Views\Xss\Level2.cshtml" />
     <Content Include="Scripts\checker.js" />
+    <Content Include="Views\Xss\Level3.cshtml" />
+    <Content Include="Content\Images\level3\1.jpg" />
+    <Content Include="Content\Images\level3\2.jpg" />
+    <Content Include="Content\Images\level3\3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

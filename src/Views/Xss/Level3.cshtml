@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Header = "Candy XSS: Level 3";
+}
+
+<script>
+    function changeBackground(num) {
+        if (parseInt(num) >= 1 || parseInt(num) <= 3) {
+            $('#image').html("<img src='/Content/Images/level3/" + num + ".jpg' />");
+        }
+    }
+
+    $(window).on('hashchange', function() {
+        changeBackground(window.location.hash.substr(1));
+    });
+
+    window.onload = function() {
+        changeBackground(window.location.hash.substr(1) || "1");
+    }
+</script>
+
+<div id="task" class="level">
+    <div>Сделайте DOM-based XSS и выведите что-нибудь при помощи <b><code>alert()</code></b>.</div>
+    <div>
+        <a href="#1">Один</a>
+        <a href="#2">Два</a>
+        <a href="#3">Три</a>
+    </div>
+    <div id="image"></div>
+</div>
+
+<p id="nextLevel" class="hidden">Отлично! @Html.ActionLink("Следующий уровень", "Level4", "Xss").</p>
