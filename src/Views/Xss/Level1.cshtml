@@ -7,7 +7,6 @@
 
 @section Scripts
 {
-    <script src="~/Scripts/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script>
         var originalAlert = window.alert;
         var isAlerted = false;
@@ -34,6 +33,4 @@
     </form>
 </div>
 
-<div id="nextLevel" class="level hidden">
-    <div>Отлично! @Html.ActionLink("Следующий уровень", "Level2", "Xss").</div>
-</div>
+<p id="nextLevel" class="hidden">Отлично! @Html.ActionLink("Следующий уровень", "Level2", "Xss").</p>
