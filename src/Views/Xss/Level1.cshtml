@@ -1,4 +1,39 @@
-﻿@{
+﻿@model string
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Header = "Candy XSS: Level 1";
 }
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script>
+        var originalAlert = window.alert;
+        var isAlerted = false;
+        window.alert = function(s) {
+            isAlerted = true;
+            originalAlert(s);
+        };
+        $(function(){
+            if (isAlerted) {
+                $('#task').hide();
+                $('#nextLevel').show();
+            }
+        });
+    </script>
+}
+
+<div id="task" class="level">
+    <div>Сделайте XSS.</div>
+    @if (!string.IsNullOrWhiteSpace(Model)) {
+        <div>По запросу &laquo;@Html.Raw(Model)&raquo; ничего не найдено.</div>
+    }
+    <form action="" method="GET">
+      <input id="query" name="query" value="" autofocus="true" autocomplete="off" />
+    </form>
+</div>
+
+<div id="nextLevel" class="level hidden">
+    <div>Отлично! @Html.ActionLink("Следующий уровень", "Level2", "Xss").</div>
+</div>

@@ -72,6 +72,7 @@
     <Content Include="Views\Csrf\Level2NotCsrf.cshtml" />
     <Content Include="Views\Csrf\Level2Success.cshtml" />
     <Content Include="Content\Images\game-over.jpg" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

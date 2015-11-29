@@ -49,3 +49,31 @@ p {
     width: 50%;
     border: 7px solid pink;
 }
+
+.level {
+    background: rgba(255, 255, 255, 0.5);
+    margin: 5em auto 6em;
+    padding: 1em 2em 1.2em;
+    font-size: 30px;
+    width: 50%;
+    border: 7px solid pink;
+}
+
+.level input {
+    background: rgba(255, 255, 255, 0.5);
+    margin: 1em auto 1em;
+    padding: 1em 2em 1.2em;
+    font-size: 30px;
+    width: 80%;
+    border: 7px solid yellow;
+}
+
+.level div {
+    margin: 0em auto 0em;
+    font-size: 30px;
+    width: 80%;
+}
+
+.hidden {
+    display: none;
+}

@@ -8,6 +8,7 @@
         <meta charset="UTF-8">
         <title>Candy Security Game</title>
         <link rel="stylesheet" type="text/css" href="~/Content/Styles/style.css">
+        @RenderSection("Scripts", false)
     </head>
     @{var bodyClass = ViewBag.EndOfGame == true ? "game-over" : "normal";}
     <body class="@bodyClass">
