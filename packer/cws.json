@@ -28,9 +28,6 @@
   "builders": [
     {
       "type": "virtualbox-iso",
-      "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--natpf1", "cws,tcp,,31337,,80"]
-      ],
       "boot_command": [
                 "<esc><esc><enter><wait>",
                 "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
@@ -54,13 +51,15 @@
       "ssh_wait_timeout": "10000s",
       "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "virtualbox_version_file": ".vbox_version"
+      "virtualbox_version_file": ".vbox_version",
+      "vm_name": "CWS"
     }
   ],
   "post-processors": [
         [{
         "type": "vagrant",
-        "keep_input_artifact": false
+        "keep_input_artifact": false,
+        "vagrantfile_template": "Vagrantfile.template"
         },
       {
         "type": "atlas",
@@ -69,7 +68,7 @@
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "virtualbox",
-          "version": "0.0.1"
+          "version": "0.0.3"
         }
         }]
     ]
