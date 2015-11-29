@@ -80,6 +80,7 @@
     <Content Include="Content\Images\level3\1.jpg" />
     <Content Include="Content\Images\level3\2.jpg" />
     <Content Include="Content\Images\level3\3.jpg" />
+    <Content Include="Views\Xss\Level4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

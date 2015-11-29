@@ -42,5 +42,11 @@ namespace CWS.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Level4()
+        {
+            return View();
+        }
     }
 }
