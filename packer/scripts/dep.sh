@@ -19,20 +19,30 @@ a2enconf fqdn
 apt-get install -y libapache2-mod-mono libmono-i18n4.0-cil
 apt-get install -y mono-apache-server4
 
-wget -O /tmp/candy-web-security.tar.gz https://s3.eu-central-1.amazonaws.com/ar7z1/happydev/candy-web-security-buildoutput-f14276e.tar.gz
+echo "Listen 81" | tee -a /etc/apache2/ports.conf
+
+wget -O /tmp/candy-web-security.tar.gz https://s3.eu-central-1.amazonaws.com/ar7z1/happydev/candy-web-security-buildoutput-01c3212.tar.gz
 mkdir -p /tmp/candy-web-security && tar -xf /tmp/candy-web-security.tar.gz -C /tmp/candy-web-security
 rm -rf /var/www/html/
-cp -R /tmp/candy-web-security/_PublishedWebsites/CWS/* /var/www/
+
+mkdir -p /var/www/cws/
+cp -R /tmp/candy-web-security/_PublishedWebsites/CWS/* /var/www/cws/
+
+mkdir -p /var/www/alert/
+tee /var/www/alert/alert.js <<EOF
+alert('alert');
+EOF
+
 chown -R www-data:www-data /var/www/
-sudo tee /etc/apache2/sites-available/000-default.conf <<EOF
+tee /etc/apache2/sites-available/000-default.conf <<EOF
 <VirtualHost *:80>
   ServerName cws
   ServerAdmin zinenkoartem@gmail.com
-  DocumentRoot /var/www/
+  DocumentRoot /var/www/cws/
   MonoServerPath cws "/usr/bin/mod-mono-server4"
   MonoDebug cws true
   MonoSetEnv cws MONO_IOMAP=all
-  MonoApplications cws "/:/var/www/"
+  MonoApplications cws "/:/var/www/cws/"
 
   ErrorLog ${APACHE_LOG_DIR}/error.log
   CustomLog ${APACHE_LOG_DIR}/access.log combined
@@ -48,6 +58,20 @@ sudo tee /etc/apache2/sites-available/000-default.conf <<EOF
   <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript
   </IfModule>
+</VirtualHost>
+
+<VirtualHost *:81>
+  ServerName cws
+  ServerAdmin zinenkoartem@gmail.com
+  DocumentRoot /var/www/alert/
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  <Location "/">
+    Allow from all
+    Order allow,deny
+  </Location>
 </VirtualHost>
 EOF
 /etc/init.d/apache2 start
