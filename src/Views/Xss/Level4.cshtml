@@ -3,6 +3,63 @@
     ViewBag.Header = "Candy XSS: Level 4";
 }
 
+<script>
+    function isLocal(str) {
+        return !str.match(/^https?:\/\//);
+    }
+
+    function log(text) {
+        $('#log').text(text).show();
+    }
+
+    function loadScriptFromHash() {
+        var scriptSrc = window.location.hash.substr(1);
+        if (!scriptSrc) {
+            $('#log').hide();
+            return;
+        }
+
+        if (isLocal(scriptSrc)) {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = scriptSrc;
+            s.onload = function() {
+                log("Скрипт '" + scriptSrc + "' загружен.");
+
+            };
+            s.onerror = function() {
+                log("Не удалось загрузить скрипт '" + scriptSrc + "'.");
+            };
+            document.head.appendChild(s);
+        }
+        else {
+            log("Скрипт '" + scriptSrc + "' - внешний.")
+        }
+    }
+
+    $(window).on('hashchange', function() {
+        loadScriptFromHash();
+    });
+
+    window.onload = function() {
+        loadScriptFromHash();
+    };
+
+    $(function(){
+        $("#scriptInput").keyup(function(event){
+            if(event.keyCode == 13){
+                var scriptSource = $("#scriptInput").val();
+                window.location.hash = scriptSource;
+                $("#scriptInput").val('');
+            }
+        });
+    });
+</script>
+
 <div id="task" class="level">
-    <div>Сделайте XSS и выведите что-нибудь при помощи <b><code>alert()</code></b>.</div>
+    <div>Сделайте XSS, подгрузив внешний скрипт, и выведите что-нибудь при помощи <b><code>alert()</code></b>.</div>
+    <div id="log" class="hidden"></div>
+    <input type="text" id="scriptInput" value="" autofocus="true" autocomplete="off" />
 </div>
+
+<p id="nextLevel" class="hidden">Отлично! @Html.ActionLink("На главную", "Index", "Home").</p>
