@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Header = "Candy Security Game";
+}
+
+<div>
+    <span>
+        <a class="big-link" href="@Url.Action("Level1", "XssAttack")">Attack</a>
+        <a class="big-link" href="@Url.Action("Level1", "XssAttack")">Defence</a>
+    </span>
+</div>

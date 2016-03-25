@@ -65,7 +65,7 @@
     <Content Include="Content\Styles\style.css" />
     <Content Include="Content\Images\charlie-unicorn-candy-mountain.jpg" />
     <Content Include="Views\Csrf\Level1.cshtml" />
-    <Content Include="Views\Xss\Level1.cshtml" />
+    <Content Include="Views\XssAttack\Level1.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Csrf\Level1Success.cshtml" />
     <Content Include="Views\Csrf\BackToLevel1.cshtml" />
@@ -80,20 +80,21 @@
     <Content Include="Views\Csrf\Level2Success.cshtml" />
     <Content Include="Content\Images\game-over.jpg" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Views\Xss\Level2.cshtml" />
+    <Content Include="Views\XssAttack\Level2.cshtml" />
     <Content Include="Scripts\checker.js" />
-    <Content Include="Views\Xss\Level3.cshtml" />
+    <Content Include="Views\XssAttack\Level3.cshtml" />
     <Content Include="Content\Images\level3\1.jpg" />
     <Content Include="Content\Images\level3\2.jpg" />
     <Content Include="Content\Images\level3\3.jpg" />
-    <Content Include="Views\Xss\Level4.cshtml" />
+    <Content Include="Views\XssAttack\Level4.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\XssController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\XssController.cs" />
+    <Compile Include="Controllers\XssAttackController.cs" />
     <Compile Include="Controllers\CsrfController.cs" />
   </ItemGroup>
   <PropertyGroup>
@@ -125,5 +126,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Xss\Index.cshtml" />
+  </ItemGroup>
 </Project>

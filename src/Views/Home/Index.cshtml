@@ -3,7 +3,9 @@
     ViewBag.Header = "Candy Security Game";
 }
 
-<span>
-    <a class="big-link" href="@Url.Action("Level1", "Xss")">XSS</a>
-    <a class="big-link" href="@Url.Action("Level1", "Csrf")">CSRF</a>
-</span>
+<div>
+    <span>
+        <a class="big-link" href="@Url.Action("Index", "Xss")">XSS</a>
+        <a class="big-link" href="@Url.Action("Level1", "Csrf")">CSRF</a>
+    </span>
+</div>
