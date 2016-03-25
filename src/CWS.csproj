@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\XssController.cs" />
+    <Compile Include="Controllers\XssDefenceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,5 +129,8 @@
   </ProjectExtensions>
   <ItemGroup>
     <Content Include="Views\Xss\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\XssDefence\Level1.cshtml" />
   </ItemGroup>
 </Project>
