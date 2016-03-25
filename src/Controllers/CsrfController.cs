@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using System.IO;
 
 namespace CWS.Controllers
 {
@@ -15,7 +13,7 @@ namespace CWS.Controllers
         public const string Level1CompletedKey = "5D916DDD-AA6D-4E0C-BED8-896F7C936FE4";
         private const string Level2CompletedCookieName = "Level2Completed";
         public const string Level2CompletedKey = "377d56d3-0d48-46d5-8658-e779f841bf23";
-        private JavaScriptSerializer javaScriptSerializer;
+        private readonly JavaScriptSerializer javaScriptSerializer;
 
         public CsrfController()
         {
@@ -33,19 +31,23 @@ namespace CWS.Controllers
         [ActionName("Level1")]
         public ActionResult Level1Post()
         {
-            if (!CheckAuthCookie()) {
+            if (!CheckAuthCookie())
+            {
                 return View("Level1AuthFailed");
             }
 
-            if (Request.Form.Get("hacker") != "true") {
+            if (Request.Form.Get("hacker") != "true")
+            {
                 return View("Level1WrongParameter");
             }
 
-            if (!IsCsrf()) {
+            if (!IsCsrf())
+            {
                 return View("Level1NotCsrf");
             }
 
-            var cookie = new HttpCookie(Level1CompletedCookieName, Level1CompletedKey) {
+            var cookie = new HttpCookie(Level1CompletedCookieName, Level1CompletedKey)
+            {
                 HttpOnly = true,
                 Path = Url.Action("Level2"),
                 Expires = DateTime.UtcNow.AddMonths(1)
@@ -69,7 +71,8 @@ namespace CWS.Controllers
 
         private void SetAuthCookie()
         {
-            var cookie = new HttpCookie(AuthCookieName, Guid.NewGuid().ToString()) {
+            var cookie = new HttpCookie(AuthCookieName, Guid.NewGuid().ToString())
+            {
                 HttpOnly = true,
                 Path = Request.Url.AbsolutePath,
                 Expires = DateTime.UtcNow.AddMonths(1)
@@ -81,7 +84,8 @@ namespace CWS.Controllers
         public ActionResult Level2()
         {
             var level1CompletedCookie = Request.Cookies.Get(Level1CompletedCookieName);
-            if (level1CompletedCookie == null || level1CompletedCookie.Value != Level1CompletedKey) {
+            if (level1CompletedCookie == null || level1CompletedCookie.Value != Level1CompletedKey)
+            {
                 return View("BackToLevel1");
             }
 
@@ -93,28 +97,36 @@ namespace CWS.Controllers
         [ActionName("Level2")]
         public ActionResult Level2Post()
         {
-            if (!CheckAuthCookie()) {
+            if (!CheckAuthCookie())
+            {
                 return View("Level2AuthFailed");
             }
 
             Level2Data data = null;
-            using (var inputStream = new StreamReader(Request.InputStream)) {
-                try {
+            using (var inputStream = new StreamReader(Request.InputStream))
+            {
+                try
+                {
                     data = javaScriptSerializer.Deserialize<Level2Data>(inputStream.ReadToEnd());
-                } catch (Exception) {
+                }
+                catch (Exception)
+                {
                     return View("Level2BadJson");
                 }
             }
 
-            if (data == null || data.hacker != "true") {
+            if (data == null || data.hacker != "true")
+            {
                 return View("Level2WrongParameter");
             }
 
-            if (!IsCsrf()) {
+            if (!IsCsrf())
+            {
                 return View("Level2NotCsrf");
             }
 
-            var cookie = new HttpCookie(Level2CompletedCookieName, Level2CompletedKey) {
+            var cookie = new HttpCookie(Level2CompletedCookieName, Level2CompletedKey)
+            {
                 HttpOnly = true,
                 Path = Url.Action("Level2"),
                 Expires = DateTime.UtcNow.AddMonths(1)
