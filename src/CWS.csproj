@@ -95,6 +95,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\XssController.cs" />
     <Compile Include="Controllers\CsrfController.cs" />
+    <Compile Include="Controllers\LinksRepository.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

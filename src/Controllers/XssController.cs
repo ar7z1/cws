@@ -7,7 +7,12 @@ namespace CWS.Controllers
     [ValidateInput(false)]
     public class XssController : Controller
     {
-        private static readonly List<Uri> links = new List<Uri>();
+        LinksRepository linksRepository;
+
+        public XssController()
+        {
+            linksRepository = new LinksRepository();
+        }
 
         [HttpGet]
         public ActionResult Level1(string query)
@@ -19,6 +24,7 @@ namespace CWS.Controllers
         [HttpGet]
         public ActionResult Level2()
         {
+            var links = linksRepository.Get(Session.SessionID);
             return View(links);
         }
 
@@ -28,12 +34,14 @@ namespace CWS.Controllers
             Uri uri;
             if (Uri.TryCreate(link, UriKind.Absolute, out uri))
             {
-                links.Add(uri);
+                linksRepository.Add(Session.SessionID, uri);
             }
             else
             {
                 ViewBag.UriParseErrorLink = link;
             }
+
+            var links = linksRepository.Get(Session.SessionID);
             return View(links);
         }
 
